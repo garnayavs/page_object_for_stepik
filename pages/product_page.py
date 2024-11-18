@@ -21,9 +21,9 @@ class ProductPage(BasePage):
             *ProductPageLocators.ALERT_BASKET_PRICE), "Alert with price is not presented"
 
     def should_be_product_title_in_alert(self):
-        assert self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN) in self.text(
+        assert self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN) == self.text(
             *ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), f"Product name '{self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN)}' not presented in success alert"
 
     def should_be_product_price_in_alert(self):
-        assert self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN) in self.text(
+        assert self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN) == self.text(
             *ProductPageLocators.ALERT_BASKET_PRICE), f"Product price '{self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN)}' not presented in alert with basket"
