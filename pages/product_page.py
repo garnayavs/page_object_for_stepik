@@ -22,8 +22,18 @@ class ProductPage(BasePage):
 
     def should_be_product_title_in_alert(self):
         assert self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN) == self.text(
-            *ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), f"Product name '{self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN)}' not presented in success alert"
+            *ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), \
+                f"Product name '{self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN)}' not presented in success alert"
 
     def should_be_product_price_in_alert(self):
         assert self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN) == self.text(
-            *ProductPageLocators.ALERT_BASKET_PRICE), f"Product price '{self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN)}' not presented in alert with basket"
+            *ProductPageLocators.ALERT_BASKET_PRICE), \
+                f"Product price '{self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN)}' not presented in alert with basket"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), \
+            "Success message is presented, but should not be"
+
+    def should_be_mesage_dissapear(self):
+        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), \
+            "Success message is presented, but should not be"
