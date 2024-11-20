@@ -4,21 +4,17 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
     def shoud_be_add_to_basket_button(self):
-        assert self.is_element_present(
-            *ProductPageLocators.BASKET_BUTTON), "Basket button is not presented"
+        assert self.is_element_present(*ProductPageLocators.BASKET_BUTTON), "Basket button is not presented"
 
     def click_add_to_basket_button(self):
-        basket_button = self.browser.find_element(
-            *ProductPageLocators.BASKET_BUTTON)
+        basket_button = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
         basket_button.click()
 
     def shoud_be_alert_product_success_added(self):
-        assert self.is_element_present(
-            *ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), "Alert with product name is not presented"
+        assert self.is_element_present(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), "Alert with product name is not presented"
 
     def shoud_be_alert_baket_price(self):
-        assert self.is_element_present(
-            *ProductPageLocators.ALERT_BASKET_PRICE), "Alert with price is not presented"
+        assert self.is_element_present(*ProductPageLocators.ALERT_BASKET_PRICE), "Alert with price is not presented"
 
     def should_be_product_title_in_alert(self):
         assert self.text(*ProductPageLocators.PRODUCT_TITLE_MAIN) == self.text(
@@ -31,9 +27,7 @@ class ProductPage(BasePage):
                 f"Product price '{self.text(*ProductPageLocators.PRODUCT_PRICE_MAIN)}' not presented in alert with basket"
 
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), \
-            "Success message is presented, but should not be"
+        assert self.is_not_element_present(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), "Success message is presented, but should not be"
 
     def should_be_mesage_dissapear(self):
-        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), \
-            "Success message is presented, but should not be"
+        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT_SUCCESS_ADDED), "Success message is presented, but should not be"

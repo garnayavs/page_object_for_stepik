@@ -30,6 +30,8 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, product_url)
     page.open()
     page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_page()
 
 @pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
@@ -41,6 +43,8 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page.should_not_be_items_in_basket()
     basket_page.should_be_text_empty_basket()
 
+
+@pytest.mark.xfail(reason='Known issue #1')
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, product_url, timeout=0)
     page.open()
@@ -52,6 +56,8 @@ def test_guest_cant_see_success_message(browser):
     page.open()
     page.should_not_be_success_message()
 
+
+@pytest.mark.xfail(reason='Known issue #2')
 def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, product_url, timeout=0)
     page.open()

@@ -8,5 +8,4 @@ class BasketPage(BasePage):
         assert True == bool(element_text.text), "Text that basket is empty is not presented" 
 
     def should_not_be_items_in_basket(self):
-        assert self.is_not_element_present(*BasketPageLocators.BASKET_FORMSET), \
-            "Basket formset is presented, but should not be"
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_FORMSET), "Basket formset is presented, but should not be"
